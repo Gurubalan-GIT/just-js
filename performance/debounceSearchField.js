@@ -1,13 +1,13 @@
+// Search field API call, performance improved by debounce logics on input field
 function getData() {
   console.log("Fetching from API");
 }
 
+let timer;
 function handleInputDebounce(callback, delay) {
-  let timer;
-  return function () {
+  return function (...args) {
     let context = this;
-    let args = arguments;
-    clearTimeout(timer);
+    if(timer) clearTimeout(timer);
     timer = setTimeout(() => callback.apply(context, args), delay);
   };
 }

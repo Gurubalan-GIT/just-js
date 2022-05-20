@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Event propagation</title>
+        <link href="./index.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <div>
+            <div id="grand-parent" class="grand-parent">
+                <span>Grandparent</span>
+                <div id="parent" class="parent">
+                    <span>Parent</span>
+                    <div id="child" class="child">
+                      <span>Child</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="./eventPropagation.js" ></script>
+    </body>
+</html>
