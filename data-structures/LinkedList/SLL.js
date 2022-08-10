@@ -1,3 +1,6 @@
+import pkg from 'lodash';
+const { isEqual } = pkg;
+
 // Singly Linked
 export default class SLL {
   constructor() {
@@ -23,7 +26,7 @@ export default class SLL {
     if (!this.tail) this.tail = newNode;
   }
 
-  toArray() {
+  getArray() {
     let elements = [];
     let currentNode = this.head;
     while (currentNode) {
@@ -37,7 +40,7 @@ export default class SLL {
     if (!this.head) return null;
     let currentNode = this.head;
     while (currentNode) {
-      if (currentNode.value === value) return currentNode;
+      if (currentNode.value.key === value) return currentNode;
       currentNode = currentNode.next;
     }
     return null;
@@ -56,7 +59,7 @@ export default class SLL {
     if (!this.head) return;
     let currentNode = this.head;
     while (currentNode.next) {
-      if (currentNode.next.value === value) {
+      if (isEqual(currentNode.next.value, value)) {
         currentNode.next = currentNode.next.next;
       } else {
         currentNode = currentNode.next;
@@ -81,13 +84,14 @@ export default class SLL {
   }
 }
 
-let sll = new SLL();
-sll.prepend(20000);
-sll.append("Hello!");
-sll.append(20000);
-sll.append(20000);
-sll.append("Hello!");
-sll.prepend(4000);
-sll.insertAfter(8000, "Hello!");
+// let sll = new SLL();
+// sll.prepend({id: 1, value: "testing!"});
+// sll.append("Hello!");
+// sll.append(20000);
+// sll.append(20000);
+// sll.append("Hello!");
+// sll.prepend(4000);
+// sll.insertAfter(8000, "Hello!");
+// sll.deleteAll("Hello!")
 
-console.log(sll.toArray());
+// console.log(sll.toArray());

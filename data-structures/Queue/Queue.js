@@ -1,12 +1,13 @@
 import LinkedList from "../LinkedList/SLL.js";
 
-export default class Queue {
+export default class Queue extends LinkedList {
   constructor() {
-    this.linkedList = new LinkedList();
+    super();
+    this.length = 0;
   }
 
   isEmpty() {
-    return !this.linkedList.head;
+    return !this.head;
   }
 
   peek() {
@@ -14,14 +15,16 @@ export default class Queue {
       return null;
     }
 
-    return this.linkedList.head.value;
+    return this.head.value;
   }
 
   enqueue(value) {
-    this.linkedList.append(value);
+    this.append(value);
+    this.length++;
   }
 
   dequeue() {
-    this.linkedList.deleteHead();
+    this.deleteHead();
+    this.length--;
   }
 }
