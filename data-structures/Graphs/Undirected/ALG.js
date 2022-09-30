@@ -1,4 +1,4 @@
-// Adjacency matrix Undirected Graph representation
+// Adjacency List Undirected Graph representation
 
 class AdjacencyListUGraph {
   constructor(nodes, edges, edgesToBeCreated) {
