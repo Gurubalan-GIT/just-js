@@ -1,4 +1,4 @@
-import pkg from 'lodash';
+import pkg from "lodash";
 const { isEqual } = pkg;
 
 // Singly Linked
@@ -71,16 +71,19 @@ export default class SLL {
     if (this.tail.value === value) {
       this.tail = currentNode;
     }
+    return value;
   }
 
   deleteHead() {
     if (!this.head) return null;
+    let deletedHead = this.head;
     if (this.head.next) {
       this.head = this.head.next;
     } else {
       this.head = null;
       this.tail = null;
     }
+    return deletedHead;
   }
 }
 

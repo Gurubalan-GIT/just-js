@@ -1,23 +1,48 @@
-// Adjacency List Undirected Graph representation
+// Adjacency List Undirected Graph representation with Arrays ( Dynamic arrays, since JS has dynamic arrays by default we don't bother )
+
+import Queue from "../../Queue/Queue.js";
 
 class AdjacencyListUGraph {
-  constructor(nodes, edges, edgesToBeCreated) {
+  constructor(nodes) {
     this.adjList = Array.from({ length: nodes }, () => []);
   }
 
-  addEdge(u, v) {
-    this.adjList[u].push(v);
-    this.adjList[v].push(u);
+  addEdge(src, dest) {
+    this.adjList[src].push(dest);
+    this.adjList[dest].push(src);
+  }
+
+  BFS(src) {
+    let visited = Array(nodes).fill(false);
+    console.log(visited);
+    let queue = new Queue();
+
+    queue.enqueue(src);
+    visited[src] = true;
+
+    while (queue.length) {
+      src = queue.dequeue();
+      console.log(src.value + " -> ");
+
+      this.adjList[src.value].forEach((adjNode) => {
+        if (visited[adjNode] == false) {
+          queue.enqueue(adjNode);
+          visited[adjNode] = true;
+        }
+      });
+    }
   }
 }
 
 let nodes = 6; // Number of nodes
-let edges = 6; // Number of edges
-let edgesToBeCreated = ["2,4", "1,3", "5,5", "1,5", "3,4", "4,1"]; // These are created as we don't have I/O with JS
 
-let undirectedGraph = new AdjacencyListUGraph(nodes, edges, edgesToBeCreated);
-undirectedGraph.addEdge(2, 3)
-undirectedGraph.addEdge(3, 1)
-undirectedGraph.addEdge(1, 4)
+let undirectedGraph = new AdjacencyListUGraph(nodes);
+undirectedGraph.addEdge(2, 3);
+undirectedGraph.addEdge(2, 1);
+undirectedGraph.addEdge(2, 4);
+undirectedGraph.addEdge(3, 1);
+undirectedGraph.addEdge(1, 4);
+
+undirectedGraph.BFS(2);
 
 console.log(undirectedGraph);

@@ -24,7 +24,7 @@ export default class Queue extends LinkedList {
   }
 
   dequeue() {
-    this.deleteHead();
     this.length--;
+    return this.deleteHead();
   }
 }
